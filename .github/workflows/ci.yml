@@ -73,5 +73,5 @@ jobs:
 
       - name: Run product build
         run: |
-          ./build.sh
+          ./build.sh setup
           ./build.sh nano3s
