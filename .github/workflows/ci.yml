@@ -80,7 +80,7 @@ jobs:
       # Step 3: Check disk space
       - name: Check disk space
         run: |
-          df -
+          df -h
 
       # Step 4: Free disk space
       - name: Free disk space
