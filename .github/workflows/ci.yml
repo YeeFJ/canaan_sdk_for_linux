@@ -73,5 +73,5 @@ jobs:
 
       - name: Run product build
         run: |
-          chmod +x ./build.sh
+          ./build.sh
           ./build.sh nano3s
