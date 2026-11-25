@@ -61,7 +61,7 @@ jobs:
 
   Product-build:
     name: Product build
-    needs: host_tests
+    needs: host-tests
     if: ${{ always() }}
     runs-on: ubuntu-latest
 
