@@ -66,12 +66,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Download repository source
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           submodules: recursive
 
-      - name: Run product build
+      # Step 2: Setup Canaan SDK
+      - name: Setup Canaan SDK
         run: |
           ./build.sh setup
+
+      # Step 3: Check disk space
+      - name: Check disk space
+        run: |
+          df -
+
+      # Step 4: Free disk space
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo apt-get clean
+
+      # Step 5: Check disk space after cleanup
+      - name: Check disk space after cleanup
+        run: |
+          df -h
+
+      # Step 3: Build for product
+      - name: Build Product
+        run: |
           ./build.sh nano3s
