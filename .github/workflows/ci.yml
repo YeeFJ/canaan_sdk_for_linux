@@ -58,3 +58,20 @@ jobs:
           name: host-test-reports
           path: test/results/
           if-no-files-found: ignore
+
+  Product-build:
+    name: Product build
+    needs: host_tests
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - name: Run product build
+        run: |
+          chmod +x ./build.sh
+          ./build.sh nano3s
